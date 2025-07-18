@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Paddle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Walls.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Bricks.gd" type="Script" id=4]
+[ext_resource path="res://Background.png" type="Texture" id=5]
+[ext_resource path="res://ARCADE_N.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://ScoreText.gd" type="Script" id=7]
+[ext_resource path="res://Floor.gd" type="Script" id=8]
+[ext_resource path="res://LogWall.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 73
+font_data = ExtResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 967.5, 102.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[node name="Main" type="Node2D"]
+
+[node name="Wall1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 49 )
+scale = Vector2( 4.64, 1.813 )
+
+[node name="Wall2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1981, 51 )
+scale = Vector2( 4.48, 1.731 )
+
+[node name="Wall3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1543, 14 )
+scale = Vector2( 46.541, 0.1 )
+
+[node name="Paddle" parent="." instance=ExtResource( 1 )]
+position = Vector2( 966, 946 )
+scale = Vector2( 3, 3 )
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+position = Vector2( 964, 824 )
+scale = Vector2( 2, 2 )
+
+[node name="Bricks" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 940.901, 538.984 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[node name="ScoreText" type="Label" parent="."]
+margin_left = 79.0
+margin_top = 84.0
+margin_right = 191.0
+margin_bottom = 101.0
+rect_scale = Vector2( 0.52, 0.52 )
+custom_fonts/font = SubResource( 1 )
+text = "Score: "
+script = ExtResource( 7 )
+
+[node name="Floor" type="Area2D" parent="."]
+pause_mode = 2
+position = Vector2( 0, 1025 )
+script = ExtResource( 8 )
+LevelToLoad = "res://Lose.tscn"
+
+[node name="FloorCollision" type="CollisionShape2D" parent="Floor"]
+position = Vector2( 957.5, 154.843 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 959, 540 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 974, 1019 )
+scale = Vector2( 98.3501, 6.01801 )
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="Floor" to="Floor" method="_on_Floor_body_entered"]

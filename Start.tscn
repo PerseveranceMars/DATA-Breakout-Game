@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Start.gd" type="Script" id=1]
+[ext_resource path="res://Background.png" type="Texture" id=2]
+[ext_resource path="res://MonkeWithoutPaddle.png" type="Texture" id=3]
+[ext_resource path="res://LogWall.png" type="Texture" id=4]
+[ext_resource path="res://ARCADE_N.TTF" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[node name="Start" type="Node2D"]
+script = ExtResource( 1 )
+LevelToLoad = "res://Tutorial.tscn"
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 962, 543 )
+texture = ExtResource( 2 )
+
+[node name="Monke" type="Sprite" parent="."]
+position = Vector2( 1282, 956 )
+scale = Vector2( 0.519995, 0.519995 )
+texture = ExtResource( 3 )
+
+[node name="Walls" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 4 )
+
+[node name="Start" type="Label" parent="."]
+margin_left = 542.0
+margin_top = 968.0
+margin_right = 878.0
+margin_bottom = 1005.0
+rect_scale = Vector2( 2.68, 2.68 )
+custom_fonts/font = SubResource( 1 )
+text = "Tap Space to Start
+"
+align = 1
+
+[node name="Title" type="Label" parent="."]
+margin_left = 146.0
+margin_top = 154.0
+margin_right = 482.0
+margin_bottom = 191.0
+rect_scale = Vector2( 4.89007, 4.89007 )
+custom_fonts/font = SubResource( 1 )
+text = "Monke Madness"
+align = 1

@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Bloon.png" type="Texture" id=1]
+[ext_resource path="res://BlueBloon.png" type="Texture" id=2]
+[ext_resource path="res://GreenBloon.png" type="Texture" id=3]
+[ext_resource path="res://LogWall.png" type="Texture" id=4]
+[ext_resource path="res://Background.png" type="Texture" id=5]
+[ext_resource path="res://MonkePaddle.png" type="Texture" id=6]
+[ext_resource path="res://ARCADE_N.TTF" type="DynamicFontData" id=7]
+[ext_resource path="res://Tutorial.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource( 8 )
+LevelToLoad = "res://Main.tscn"
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 962, 543 )
+texture = ExtResource( 5 )
+
+[node name="Monke" type="Sprite" parent="."]
+position = Vector2( 333, 201 )
+scale = Vector2( 0.519995, 0.519995 )
+texture = ExtResource( 6 )
+
+[node name="Walls" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 4 )
+
+[node name="Skip" type="Label" parent="."]
+margin_left = 374.0
+margin_top = 705.0
+margin_right = 822.0
+margin_bottom = 722.0
+rect_scale = Vector2( 2.68, 2.68 )
+custom_fonts/font = SubResource( 1 )
+text = "Left click to Skip tutorial"
+
+[node name="MouseInstructions" type="Label" parent="."]
+margin_left = 135.0
+margin_top = 973.0
+margin_right = 743.0
+margin_bottom = 990.0
+rect_scale = Vector2( 2.70481, 2.68 )
+custom_fonts/font = SubResource( 1 )
+text = "Move Mouse left & right to move Paddle"
+
+[node name="RedBloon" type="Sprite" parent="."]
+position = Vector2( 1316.32, 183.6 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
+
+[node name="BlueBloon" type="Sprite" parent="."]
+position = Vector2( 1319.32, 287.6 )
+scale = Vector2( 0.275876, 0.275876 )
+texture = ExtResource( 2 )
+
+[node name="GreenBloon" type="Sprite" parent="."]
+position = Vector2( 1323.32, 400.6 )
+scale = Vector2( 0.295793, 0.295793 )
+texture = ExtResource( 3 )
+
+[node name="LayerDescriptions" type="Label" parent="."]
+margin_left = 1353.0
+margin_top = 154.0
+margin_right = 1513.0
+margin_bottom = 251.0
+rect_scale = Vector2( 2.75999, 2.75999 )
+custom_fonts/font = SubResource( 2 )
+text = "= 1 layer
+
+= 2 Layers
+
+= 3 Layers"
+
+[node name="MonkeDescription" type="Label" parent="."]
+margin_left = 529.0
+margin_top = 175.0
+margin_right = 705.0
+margin_bottom = 272.0
+rect_scale = Vector2( 2.72, 2.72 )
+custom_fonts/font = SubResource( 2 )
+text = "= Your best
+  friend"
